@@ -24,7 +24,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -56,8 +58,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
 @Composable
-fun AnimatedScreen(clockSize: Dp = 200.dp,numberOfCircles: Int = 10) {
+fun AnimatedScreen(clockSize: Dp = 200.dp, numberOfCircles: Int = 10) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -72,7 +75,6 @@ fun AnimatedScreen(clockSize: Dp = 200.dp,numberOfCircles: Int = 10) {
 
 @Composable
 fun AnimatedClock(modifier: Modifier = Modifier) {
-
     val infiniteTransition = rememberInfiniteTransition(label = "")
 
     val secondsRotation by infiniteTransition.animateFloat(
@@ -94,31 +96,40 @@ fun AnimatedClock(modifier: Modifier = Modifier) {
     Canvas(modifier = modifier.size(200.dp)) {
         val radius = size.minDimension / 2
         val center = Offset(size.width / 2, size.height / 2)
+        val handOffset = 20f // Offset to shift the hands from the center
 
         drawCircle(color = Color.Black, radius = radius)
 
         // Draw seconds hand
         val secondsLength = radius * 0.8f
+        val secondsStart = Offset(
+            x = center.x - handOffset * cos(Math.toRadians(secondsRotation.toDouble() - 90).toFloat()),
+            y = center.y - handOffset * sin(Math.toRadians(secondsRotation.toDouble() - 90).toFloat())
+        )
         val secondsEnd = Offset(
             x = center.x + secondsLength * cos(Math.toRadians(secondsRotation.toDouble() - 90).toFloat()),
             y = center.y + secondsLength * sin(Math.toRadians(secondsRotation.toDouble() - 90).toFloat())
         )
         drawLine(
             color = Color.Blue,
-            start = center,
+            start = secondsStart,
             end = secondsEnd,
             strokeWidth = 4f
         )
 
         // Draw minutes hand
         val minutesLength = radius * 0.6f
+        val minutesStart = Offset(
+            x = center.x - handOffset * cos(Math.toRadians(minutesRotation.toDouble() - 90).toFloat()),
+            y = center.y - handOffset * sin(Math.toRadians(minutesRotation.toDouble() - 90).toFloat())
+        )
         val minutesEnd = Offset(
             x = center.x + minutesLength * cos(Math.toRadians(minutesRotation.toDouble() - 90).toFloat()),
             y = center.y + minutesLength * sin(Math.toRadians(minutesRotation.toDouble() - 90).toFloat())
         )
         drawLine(
             color = Color.Red,
-            start = center,
+            start = minutesStart,
             end = minutesEnd,
             strokeWidth = 8f
         )
@@ -126,7 +137,7 @@ fun AnimatedClock(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun BackgroundStroke(modifier: Modifier){
+fun BackgroundStroke(modifier: Modifier) {
     val strokeColor by rememberInfiniteTransition(label = "").animateColor(
         initialValue = Color.Red,
         targetValue = Color.Blue,
@@ -139,8 +150,8 @@ fun BackgroundStroke(modifier: Modifier){
         val radius = size.minDimension / 2
         drawCircle(
             color = strokeColor,
-            radius = radius+1,
-            style = androidx.compose.ui.graphics.drawscope.Stroke(width = 4f)
+            radius = radius + 1,
+            style = Stroke(width = 4f)
         )
     }
 }
@@ -179,7 +190,10 @@ fun VibratingCircles(
                 1f
             ),
             animationSpec = infiniteRepeatable(
-                animation = tween(durationMillis = Random.nextInt(500, 1500), easing = LinearEasing),
+                animation = tween(
+                    durationMillis = Random.nextInt(500, 1500),
+                    easing = LinearEasing
+                ),
                 repeatMode = RepeatMode.Reverse
             ), label = ""
         )
@@ -190,7 +204,10 @@ fun VibratingCircles(
             initialValue = 50f * sizeFactor,
             targetValue = 100f * sizeFactor,
             animationSpec = infiniteRepeatable(
-                animation = tween(durationMillis = Random.nextInt(500, 1500), easing = LinearEasing),
+                animation = tween(
+                    durationMillis = Random.nextInt(500, 1500),
+                    easing = LinearEasing
+                ),
                 repeatMode = RepeatMode.Reverse
             ), label = ""
         )
@@ -206,7 +223,11 @@ fun VibratingCircles(
             val offsetY = (100 * sin(angle)).toFloat()
 
             drawCircle(
-                color = colorList[i].value,
+                brush = Brush.radialGradient(
+                    colors = listOf(colorList[i].value, Color.Transparent),
+                    center = Offset(centerX + offsetX, centerY + offsetY),
+                    radius = sizeList[i].value * 5f // Sharpen the gradient
+                ),
                 radius = sizeList[i].value,
                 center = Offset(centerX + offsetX, centerY + offsetY)
             )
