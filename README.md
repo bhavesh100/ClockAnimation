@@ -13,7 +13,7 @@ Clock Animation App is a Jetpack Compose application that displays a vibrant, an
 
 ## Demo Video
 <p align="center">
-    <img src="[https://github.com/user-attachments/assets/95266d20-2eaf-4a0a-87ec-9883767a177a]" alt="Clock Animation Demo" width="400"/>
+    <img src="https://github.com/user-attachments/assets/95266d20-2eaf-4a0a-87ec-9883767a177a" alt="Clock Animation Demo" width="400"/>
 </p>
 
 ## Getting Started
