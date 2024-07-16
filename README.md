@@ -4,6 +4,17 @@ Clock Animation App is a Jetpack Compose application that displays a vibrant, an
 - **Animated Clock Hands**: The seconds and minutes hands of the clock rotate smoothly.
 - **Dynamic Background Stroke**: The outer circle changes color dynamically to create a striking visual effect.
 - **Vibrating Circles**: Multiple circles vibrate and change size and color around the clock, enhancing the visual appeal.
+## Screenshots
+<p align="center">
+    <img src="https://github.com/user-attachments/assets/abdb639f-cd49-4446-88a1-50c47ef1cec4" alt="screenshot1" width="200"/>
+    <img src="https://github.com/user-attachments/assets/4587da77-76d6-4b12-8bab-72305055ac6b" alt="screenshot2" width="200"/>
+    <img src="https://github.com/user-attachments/assets/535d747e-f41a-43c9-b93f-207da6b22d2f" alt="screenshot3" width="200"/>
+</p>
+
+## Demo Video
+<p align="center">
+    <img src="[https://github.com/user-attachments/assets/95266d20-2eaf-4a0a-87ec-9883767a177a]" alt="Clock Animation Demo" width="400"/>
+</p>
 
 ## Getting Started
 
