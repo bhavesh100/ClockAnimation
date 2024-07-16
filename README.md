@@ -1,36 +1,46 @@
 # ClockAnimation
 Clock Animation App is a Jetpack Compose application that displays a vibrant, animated clock with dynamic, vibrating circles around it. The app features animated clock hands, a changing background stroke, and vibrant circles that provide an eye-catching effect.
 ## Features
-* Animated Clock Hands: The seconds and minutes hands of the clock rotate smoothly.
-* Dynamic Background Stroke: The outer circle changes color dynamically to create a striking visual effect.
-* Vibrating Circles: Multiple circles vibrate and change size and color around the clock, enhancing the visual appeal.
+- **Animated Clock Hands**: The seconds and minutes hands of the clock rotate smoothly.
+- **Dynamic Background Stroke**: The outer circle changes color dynamically to create a striking visual effect.
+- **Vibrating Circles**: Multiple circles vibrate and change size and color around the clock, enhancing the visual appeal.
+
 ## Getting Started
+
 ### Prerequisites
-* Android Studio
-* Kotlin
-* Android SDK
-## Installation
-1. Clone the repository:
-```console
-git clone https://github.com/bhavesh100/ClockAnimation.git
-```
-2. Open the project in Android Studio:
+
+- Android Studio Jellyfish or later
+- Kotlin
+- Android SDK 29 or later
+
+### Installation
+
+1. **Clone the repository:**
+
+    ```sh
+    git clone https://github.com/bhavesh100/ClockAnimation.git
+    ```
+
+2. **Open the project in Android Studio:**
 
     Navigate to the project directory and open it in Android Studio.
 
-3. Build the project:
+3. **Build the project:**
 
-    Click on the Build option in the top menu and select Make Project.
+    Click on the `Build` option in the top menu and select `Make Project`.
 
-4. Run the application:
+4. **Run the application:**
 
     Connect your Android device or start an emulator.
-    Click on the Run button in Android Studio.
+    Click on the `Run` button in Android Studio.
 
 ## Code Structure
+
 ### MainActivity
+
 The `MainActivity` sets up the content view and enables edge-to-edge display. It also configures the status bar appearance.
-```kt
+
+```kotlin
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +59,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 ```
 ### Composables
 * AnimatedScreen: The main screen composable that contains the background stroke, vibrating circles, and the animated clock.
