@@ -74,7 +74,7 @@ You can change the size factor of the vibrating circles by adjusting the `sizeFa
 ```kt
 VibratingCircles(modifier = Modifier.fillMaxSize(), numberOfCircles = numberOfCircles, sizeFactor = 2.5f)
 ```
-### Contributing
+## Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
