@@ -12,7 +12,7 @@ Clock Animation App is a Jetpack Compose application that displays a vibrant, an
 ## Installation
 1. Clone the repository:
 ```console
-git clone https://github.com/yourusername/ClockAnimationApp.git
+git clone https://github.com/bhavesh100/ClockAnimation.git
 ```
 2. Open the project in Android Studio:
 
@@ -71,13 +71,15 @@ AnimatedScreen(clockSize = 200.dp, numberOfCircles = 10)
 ```
 #### Changing Circle Size Factor
 You can change the size factor of the vibrating circles by adjusting the `sizeFactor` parameter in the `VibratingCircles` composable:
-```
+```kt
 VibratingCircles(modifier = Modifier.fillMaxSize(), numberOfCircles = numberOfCircles, sizeFactor = 2.5f)
 ```
-###Contributing
+### Contributing
 Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 1. Fork the repository
-2. Create your feature branch (git checkout -b feature/AmazingFeature)
-3. Commit your changes (git commit -m 'Add some amazing feature')
-4. Push to the branch (git push origin feature/AmazingFeature)
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a pull request
+## Contact
+If you have any questions or suggestions, feel free to reach out to me at kumawatbhavesh1000@gmail.com.
