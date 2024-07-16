@@ -1,6 +1,83 @@
 # ClockAnimation
 Clock Animation App is a Jetpack Compose application that displays a vibrant, animated clock with dynamic, vibrating circles around it. The app features animated clock hands, a changing background stroke, and vibrant circles that provide an eye-catching effect.
-# Features
+## Features
 * Animated Clock Hands: The seconds and minutes hands of the clock rotate smoothly.
 * Dynamic Background Stroke: The outer circle changes color dynamically to create a striking visual effect.
 * Vibrating Circles: Multiple circles vibrate and change size and color around the clock, enhancing the visual appeal.
+## Getting Started
+### Prerequisites
+* Android Studio
+* Kotlin
+* Android SDK
+## Installation
+1. Clone the repository:
+```console
+git clone https://github.com/yourusername/ClockAnimationApp.git
+```
+2. Open the project in Android Studio:
+
+    Navigate to the project directory and open it in Android Studio.
+
+3. Build the project:
+
+    Click on the Build option in the top menu and select Make Project.
+
+4. Run the application:
+
+    Connect your Android device or start an emulator.
+    Click on the Run button in Android Studio.
+
+## Code Structure
+### MainActivity
+The `MainActivity` sets up the content view and enables edge-to-edge display. It also configures the status bar appearance.
+```kt
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            ClockAnimationTheme {
+                SideEffect {
+                    val window = this@MainActivity.window
+                    window.statusBarColor = Color.Black.toArgb()
+                    WindowCompat.getInsetsController(window, window.decorView).isAppearanceLightStatusBars = false
+                }
+                Surface(color = Color.Black) {
+                    AnimatedScreen()
+                }
+            }
+        }
+    }
+}
+
+```
+### Composables
+* AnimatedScreen: The main screen composable that contains the background stroke, vibrating circles, and the animated clock.
+* AnimatedClock: A composable that displays the clock with animated hands.
+* BackgroundStroke: A composable that draws the dynamic outer circle around the clock.
+* VibratingCirclesScreen: A composable that sets up the vibrating circles.
+* VibratingCircles: A composable that draws the vibrating circles around the clock.
+
+### Animations
+* Clock Hands: The seconds and minutes hands rotate using animateFloat.
+* Background Stroke: The outer circle's color changes using animateColor.
+* Vibrating Circles: Each circle vibrates and changes color and size using animateColor and animateFloat.
+
+### Customization
+#### Adjusting the Number of Circles
+You can adjust the number of vibrating circles by changing the `numberOfCircles` parameter in the `AnimatedScreen` composable:
+```kt
+AnimatedScreen(clockSize = 200.dp, numberOfCircles = 10)
+```
+#### Changing Circle Size Factor
+You can change the size factor of the vibrating circles by adjusting the `sizeFactor` parameter in the `VibratingCircles` composable:
+```
+VibratingCircles(modifier = Modifier.fillMaxSize(), numberOfCircles = numberOfCircles, sizeFactor = 2.5f)
+```
+###Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
+1. Fork the repository
+2. Create your feature branch (git checkout -b feature/AmazingFeature)
+3. Commit your changes (git commit -m 'Add some amazing feature')
+4. Push to the branch (git push origin feature/AmazingFeature)
+5. Open a pull request
